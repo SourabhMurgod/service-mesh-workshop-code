@@ -6,8 +6,8 @@ WORKDIR /opt/app-root/src
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --omit=dev
+# Remove old package-lock.json and install dependencies
+RUN rm -f package-lock.json && npm install --omit=dev
 
 # Copy application code
 COPY . .
